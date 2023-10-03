@@ -1,12 +1,12 @@
 package com.springBoot.demo.services;
 
 import com.springBoot.demo.entities.User;
+import com.springBoot.demo.exceptions.BadRequestException;
 import com.springBoot.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -17,8 +17,11 @@ public class UserService {
         return userRepository.findAll();
     }
     public User findById(Long id){
-        Optional<User> obj = userRepository.findById(id);
-        return  obj.get();
+        return userRepository.findById(id).orElseThrow(()-> new BadRequestException("user not found"));
+
     }
 
+    public User create(User user) {
+        return userRepository.save(user);
+    }
 }
