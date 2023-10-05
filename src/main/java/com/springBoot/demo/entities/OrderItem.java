@@ -26,12 +26,13 @@ public class OrderItem {
         this.price = price;
     }
     @JsonIgnore
-    public  Order getOrder(Order order){
+    public  Order getOrder(){
         return  id.getOrder();
     }
     public void setOrder(Order order){
         id.setOrder(order);
     }
+
     public  Product getProduct(Product product){
         return  id.getProduct();
     }
