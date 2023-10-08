@@ -2,6 +2,7 @@ package com.springBoot.demo.services;
 
 import com.springBoot.demo.entities.User;
 import com.springBoot.demo.exceptions.BadRequestException;
+import com.springBoot.demo.exceptions.ResourceNotFoundException;
 import com.springBoot.demo.repositories.UserRepository;
 import org.apache.juli.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class UserService {
         return userRepository.findAll();
     }
     public User findById(Long id){
-        return userRepository.findById(id).orElseThrow(()-> new BadRequestException("user not found"));
+        return userRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException(id));
 
     }
 
