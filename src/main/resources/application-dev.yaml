@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/springboot_course
+    username: postgres
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        hibernate:
+          ddl-auto: update
+          show-sql: true
+          format_sql: true
+  profiles:
+    active:
+      default: dev
+jwt:
+  secret: MYJWTSECRET
+  expiration: 3600000
